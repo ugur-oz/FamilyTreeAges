@@ -12,20 +12,29 @@ public class Human {
 
     public int getFamilyAge() {
         if (this.mother == null && this.father == null) {
-            return this.age;
-        } else if (this.mother != null && this.father == null) {
             if (this.getSiblings().size() > 0) {
                 int siblingsAgeSum = 0;
                 for (int i = 0; i < this.getSiblings().size(); i++) {
                     siblingsAgeSum += this.getSiblings().get(i).getAge();
                 }
                 return this.age + siblingsAgeSum;
+            }
+            if (this.mother != null && this.father == null) {
+                if (this.mother.getSiblings().size() > 0) {
+                    int mothersiblingsAgeSum = 0;
+                    for (int i = 0; i < this.mother.getSiblings().size(); i++) {
+                        mothersiblingsAgeSum += this.mother.getSiblings().get(i).getAge();
+                    }
+                    return this.age + mothersiblingsAgeSum ;
+                }
+
             } else if (this.mother == null && this.father != null) {
                 if (this.getSiblings().size() > 0) {
                     int siblingsAgeSum = 0;
                     for (int i = 0; i < this.getSiblings().size(); i++) {
                         siblingsAgeSum += this.getSiblings().get(i).getAge();
                     }
+                    return this.age + this.father.age + siblingsAgeSum;
                 }
                 return 0;
             }
@@ -33,6 +42,7 @@ public class Human {
         }
         return 0;
     }
+
 //for loop a girmesen sifira eklersin ,
 //    int i = 0  persons.get(i).getage
 

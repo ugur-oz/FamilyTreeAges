@@ -28,10 +28,8 @@ public class HumanTest {
         Human son = new Human("Ugur", 28);
         Human mother = new Human("Emine", 45);
         Human gm = new Human("Hatice", 78);
-
         son.setMother(mother);
         mother.setMother(gm);
-
         son.getSiblings().add(new Human("Ufuk",24));
         son.getSiblings().add(new Human("Elif",18));
 
@@ -47,6 +45,9 @@ public class HumanTest {
         Assertions.assertEquals(2,son.getSiblings().size());
         Assertions.assertEquals(4,mother.getSiblings().size());
         Assertions.assertEquals(3,gm.getSiblings().size());
+        //Assertions.assertEquals(78+89+95,gm.getFamilyAge());
+        Assertions.assertEquals(33+54+48+69,mother.getFamilyAge());
+        //Assertions.assertEquals(24+18,son.getFamilyAge());
 
 
         Assertions.assertEquals(28 + 45 + gm.getAge(), son.getAgeCounter());
