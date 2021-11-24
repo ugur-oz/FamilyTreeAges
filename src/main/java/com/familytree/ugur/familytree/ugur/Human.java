@@ -1,11 +1,32 @@
 package com.familytree.ugur.familytree.ugur;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Human {
     private String Name;
     private int age;
     private Human mother;
     private Human father;
+    private List<Human> siblings = new ArrayList();
 
+    public int getFamilyAge() {
+        if (this.mother == null && this.father == null) {
+            return this.siblings();
+        }
+        else if (this.mother != null && this.father == null) {
+            for(int i=0;i<getSiblings().size();i++);
+                return this.age + getSiblings().get(i).getAge();
+        } else if (this.mother == null && this.father != null) {
+            for(int i=0;i<getSiblings().size();i++);
+            return this.age + getSiblings().get(i).getAge(); {
+
+        }
+    }
+//for loop a girmesen sifira eklersin ,
+//    int i = 0  persons.get(i).getage
+
+    return 0;
 
     public int getAgeCounter() {
         if (this.mother == null && this.father == null) {
@@ -61,7 +82,12 @@ public class Human {
         return father;
     }
 
+    public List<Human> getSiblings() {
+        return siblings;
+    }
+
     public void setFather(Human father) {
         this.father = father;
     }
+
 }

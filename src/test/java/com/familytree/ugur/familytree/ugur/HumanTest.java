@@ -9,8 +9,17 @@ public class HumanTest {
     @Test
     void test1() {
         Human son = new Human("Ugur", 28);
-        Assertions.assertEquals(28, son.getAgeCounter());
+        son.getSiblings().add(new Human("Ufuk",21));
+        son.getSiblings().add(new Human("Atakan",5));
+        son.getSiblings().add(new Human("Elif",18));
+        son.getSiblings().add(new Human("Mehmet",34));
+        son.getSiblings().add(new Human("Emine",48));
 
+        Assertions.assertEquals(28, son.getAgeCounter());
+        Assertions.assertEquals(5,son.getSiblings().size());
+        Assertions.assertEquals("Atakan", son.getSiblings().get(1).getName());
+        Assertions.assertEquals("Emine", son.getSiblings().get(4).getName());
+        Assertions.assertEquals(34,son.getSiblings().get(3).getAge());
     }
 
     @Test
@@ -21,6 +30,22 @@ public class HumanTest {
 
         son.setMother(mother);
         mother.setMother(gm);
+
+        son.getSiblings().add(new Human("Ufuk",24));
+        son.getSiblings().add(new Human("Elif",18));
+
+        mother.getSiblings().add(new Human("Emel",33));
+        mother.getSiblings().add(new Human("Ali",54));
+        mother.getSiblings().add(new Human("Uraz",48));
+        mother.getSiblings().add(new Human("Kali",69));
+
+        gm.getSiblings().add(new Human("Mahmut",78));
+        gm.getSiblings().add(new Human("Ismail",89));
+        gm.getSiblings().add(new Human("Leman",95));
+
+        Assertions.assertEquals(2,son.getSiblings().size());
+        Assertions.assertEquals(4,mother.getSiblings().size());
+        Assertions.assertEquals(3,gm.getSiblings().size());
 
 
         Assertions.assertEquals(28 + 45 + gm.getAge(), son.getAgeCounter());
