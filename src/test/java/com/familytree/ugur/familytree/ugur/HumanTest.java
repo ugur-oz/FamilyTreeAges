@@ -20,6 +20,7 @@ public class HumanTest {
         Assertions.assertEquals("Atakan", son.getSiblings().get(1).getName());
         Assertions.assertEquals("Emine", son.getSiblings().get(4).getName());
         Assertions.assertEquals(34,son.getSiblings().get(3).getAge());
+        Assertions.assertEquals(28+21+5+18+34+48,son.getFamilyAge());
     }
 
     @Test
