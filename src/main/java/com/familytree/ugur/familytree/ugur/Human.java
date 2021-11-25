@@ -20,15 +20,17 @@ public class Human {
         if (this.mother == null && this.father == null) {
             return this.age + siblingsAges;
         } else if (this.mother != null && this.father != null)  {
-            int ancestorsMother = this.mother.getAgeCounter();
-            int ancestorsFather = this.father.getAgeCounter();
+            int ancestorsMother = this.mother.getFamilyAge();
+            int ancestorsFather = this.father.getFamilyAge();
             return this.age + ancestorsFather + ancestorsMother + siblingsAges;
         } else if (this.mother != null) {
-            return this.age + this.mother.getAgeCounter() + siblingsAges;
+            return this.age + this.mother.getFamilyAge() + siblingsAges;
         } else {
-            return this.age + this.father.getAgeCounter() + siblingsAges;
+            return this.age + this.father.getFamilyAge() + siblingsAges;
         }
     }
+
+
 
 //for loop a girmesen sifira eklersin ,
 //    int i = 0  persons.get(i).getage
