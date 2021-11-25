@@ -11,36 +11,23 @@ public class Human {
     private List<Human> siblings = new ArrayList<>();
 
     public int getFamilyAge() {
-        if (this.mother == null && this.father == null) {
-            if (this.getSiblings().size() > 0) {
-                int siblingsAgeSum = 0;
-                for (int i = 0; i < this.getSiblings().size(); i++) {
-                    siblingsAgeSum += this.getSiblings().get(i).getAge();
-                }
-                return this.age + siblingsAgeSum;
+        int siblingsAges = 0;
+        if (this.siblings.size() > 0) {
+            for (Human sibling : this.siblings) {
+                siblingsAges += sibling.getAge();
             }
-            if (this.mother != null && this.father == null) {
-                if (this.mother.getSiblings().size() > 0) {
-                    int mothersiblingsAgeSum = 0;
-                    for (int i = 0; i < this.mother.getSiblings().size(); i++) {
-                        mothersiblingsAgeSum += this.mother.getSiblings().get(i).getAge();
-                    }
-                    return this.age + mothersiblingsAgeSum ;
-                }
-
-            } else if (this.mother == null && this.father != null) {
-                if (this.getSiblings().size() > 0) {
-                    int siblingsAgeSum = 0;
-                    for (int i = 0; i < this.getSiblings().size(); i++) {
-                        siblingsAgeSum += this.getSiblings().get(i).getAge();
-                    }
-                    return this.age + this.father.age + siblingsAgeSum;
-                }
-                return 0;
-            }
-            return 0;
         }
-        return 0;
+        if (this.mother == null && this.father == null) {
+            return this.age + siblingsAges;
+        } else if (this.mother != null && this.father != null)  {
+            int ancestorsMother = this.mother.getAgeCounter();
+            int ancestorsFather = this.father.getAgeCounter();
+            return this.age + ancestorsFather + ancestorsMother + siblingsAges;
+        } else if (this.mother != null) {
+            return this.age + this.mother.getAgeCounter() + siblingsAges;
+        } else {
+            return this.age + this.father.getAgeCounter() + siblingsAges;
+        }
     }
 
 //for loop a girmesen sifira eklersin ,

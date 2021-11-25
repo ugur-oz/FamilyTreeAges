@@ -45,10 +45,9 @@ public class HumanTest {
         Assertions.assertEquals(2,son.getSiblings().size());
         Assertions.assertEquals(4,mother.getSiblings().size());
         Assertions.assertEquals(3,gm.getSiblings().size());
-        //Assertions.assertEquals(78+89+95,gm.getFamilyAge());
-        Assertions.assertEquals(33+54+48+69,mother.getFamilyAge());
-        //Assertions.assertEquals(24+18,son.getFamilyAge());
-
+        Assertions.assertEquals(24+18+33+54+48+69+78+89+95+28+45+78,gm.getFamilyAge());
+        Assertions.assertEquals(24+18+33+54+48+69,mother.getFamilyAge());
+        Assertions.assertEquals(24+18,son.getFamilyAge());
 
         Assertions.assertEquals(28 + 45 + gm.getAge(), son.getAgeCounter());
     }
