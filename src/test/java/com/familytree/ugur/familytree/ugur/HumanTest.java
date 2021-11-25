@@ -32,28 +32,28 @@ public class HumanTest {
         mother.setMother(gm);
 
         son.getSiblings().add(new Human("Ufuk",24));
-        //son.getSiblings().add(new Human("Elif",18));
+        son.getSiblings().add(new Human("Elif",18));
 
         mother.getSiblings().add(new Human("Emel",33));
-        //mother.getSiblings().add(new Human("Ali",54));
-        //mother.getSiblings().add(new Human("Uraz",48));
-        //mother.getSiblings().add(new Human("Kali",69));
+        mother.getSiblings().add(new Human("Ali",54));
+        mother.getSiblings().add(new Human("Uraz",48));
+        mother.getSiblings().add(new Human("Kali",69));
 
         gm.getSiblings().add(new Human("Mahmut",80));
-        //gm.getSiblings().add(new Human("Ismail",89));
-        //gm.getSiblings().add(new Human("Leman",95));
+        gm.getSiblings().add(new Human("Ismail",89));
+        gm.getSiblings().add(new Human("Leman",95));
 
-        /*Assertions.assertEquals(2,son.getSiblings().size());
+        Assertions.assertEquals(2,son.getSiblings().size());
         Assertions.assertEquals(4,mother.getSiblings().size());
         Assertions.assertEquals(3,gm.getSiblings().size());
 
-         */
 
-        //Assertions.assertEquals(78+24+28+45,gm.getFamilyAge());
-        //Assertions.assertEquals(28,mother.getFamilyAge());
-        Assertions.assertEquals(28+45+78+24+33+80,son.getFamilyAge());
 
-        //Assertions.assertEquals(28 + 45 + gm.getAge(), son.getAgeCounter());
+        Assertions.assertEquals(80+89+95+78,gm.getFamilyAge());
+        Assertions.assertEquals(45+78+33+54+48+69+80+89+95,mother.getFamilyAge());
+        Assertions.assertEquals(28+45+78+18+24+33+54+48+69+80+89+95,son.getFamilyAge());
+
+        Assertions.assertEquals(28 + 45 + gm.getAge(), son.getAgeCounter());
     }
 
     @Test
@@ -125,38 +125,5 @@ public class HumanTest {
         ggggf.setMother(gggggm);
 
         Assertions.assertEquals(28+51+80+85+125+145+142+184+210, son.getAgeCounter());
-
-    }
-    @Test
-    void testFive() {
-        Human greatGreatGreatGreatGrandMother1 = new Human("Georg", 55 , null, null);
-        Human greatGreatGreatGrandFather1 = new Human("Georg",90 , greatGreatGreatGreatGrandMother1, null);
-        Human greatGreatGrandMother1 = new Human("Hanne", 70, null, greatGreatGreatGrandFather1);
-
-        greatGreatGrandMother1.getSiblings().add(new Human("bruder1",30 , null, null));
-        greatGreatGrandMother1.getSiblings().add(new Human("bruder2", 35, null, null));
-
-        Human greatGrandFather1 = new Human("Georg", 55, greatGreatGrandMother1, null);
-        Human greatGrandMother1 = new Human("Jana", 56, null, null);
-        Human grandMother1 = new Human("grandle", 45, null, null);
-
-        grandMother1.getSiblings().add(new Human("bruder1", 30, null, null));
-        grandMother1.getSiblings().add(new Human("bruder2", 35, null, null));
-
-        Human grandFather1 = new Human("gusti", 46, null, null);
-        Human grandFather2 = new Human("hansle", 44, greatGrandMother1, greatGrandFather1);
-        Human grandMother2 = new Human("sii", 47, null, null);
-
-        Human mother = new Human("Hildie", 30, grandMother1, grandFather1);
-        mother.getSiblings().add(new Human("bruder1", 30, null, null));
-        mother.getSiblings().add(new Human("bruder2", 35, null, null));
-
-        Human father = new Human("Peter", 31, grandMother2, grandFather2);
-
-        father.getSiblings().add(new Human("bruder1", 30, null, null));
-        father.getSiblings().add(new Human("bruder2", 35, null, null));
-
-        Human son = new Human("Matthias", 15, mother, father);
-        Assertions.assertEquals(55 + 90 + 70 + 30 + 35 + 55 + 56 + 45 + 30 + 35 + 46 + 44 + 47 + 30 + 30 + 35 + 31 + 30 + 35 + 15, son.getFamilyAge());
     }
 }

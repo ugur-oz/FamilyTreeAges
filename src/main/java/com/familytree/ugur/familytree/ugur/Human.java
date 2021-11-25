@@ -11,22 +11,22 @@ public class Human {
     private List<Human> siblings = new ArrayList<>();
 
     public int getFamilyAge() {
-        int siblingsAges = 0;
+        int totalsiblingsAges = 0;
         if (this.siblings.size() > 0) {
             for (Human sibling : this.siblings) {
-                siblingsAges += sibling.getAge();
+                totalsiblingsAges += sibling.getAge();
             }
         }
         if (this.mother == null && this.father == null) {
-            return this.age + siblingsAges;
+            return this.age + totalsiblingsAges;
         } else if (this.mother != null && this.father != null)  {
             int ancestorsMother = this.mother.getFamilyAge();
             int ancestorsFather = this.father.getFamilyAge();
-            return this.age + ancestorsFather + ancestorsMother + siblingsAges;
+            return this.age + ancestorsFather + ancestorsMother + totalsiblingsAges;
         } else if (this.mother != null) {
-            return this.age + this.mother.getFamilyAge() + siblingsAges;
+            return this.age + this.mother.getFamilyAge() + totalsiblingsAges;
         } else {
-            return this.age + this.father.getFamilyAge() + siblingsAges;
+            return this.age + this.father.getFamilyAge() + totalsiblingsAges;
         }
     }
 
